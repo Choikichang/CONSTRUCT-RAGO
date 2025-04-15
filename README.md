@@ -6,9 +6,7 @@
 
 [![Paper](https://img.shields.io/badge/Paper-SSRN-blue)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5205959)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![arXiv](https://img.shields.io/badge/arXiv-2025.XXXXX-b31b1b.svg)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5205959)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/KichChat/CONSTRUCT-RAG/graphs/commit-activity)
 
 </div>
 
