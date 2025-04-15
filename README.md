@@ -17,6 +17,8 @@
 - [주요 기능 / Key Features](#-주요-기능--key-features)
 - [설치 방법 / Installation](#-설치-방법--installation)
 - [사용 방법 / Usage](#-사용-방법--usage) 
+- [답변 생성 평가 / Answer Generation Evaluation](#-답변-생성-평가--answer-generation-evaluation)
+- [성능 비교 / Performance Comparison](#-성능-비교--performance-comparison)
 - [인용 / Citation](#-인용--citation)
 - [라이센스 / License](#-라이센스--license)
 - [연락처 / Contact](#-연락처--contact)
@@ -104,6 +106,40 @@ python download_models.py
 | KLUE-RoBERTa-base + MNRL + MRL + SBE | **69.32%** | **0.8082** | **0.7769** | 443MB |
 | multilingual-e5-large | 59.84% | 0.7336 | 0.6961 | 2.24GB |
 | text-embedding-3-large | 52.67% | 0.6784 | 0.6349 | - |
+
+
+## 🔍 답변 생성 평가 / Answer Generation Evaluation
+
+CONSTRUCT-RAG는 정확한 검색뿐만 아니라 고품질의 답변 생성도 중요시합니다. 다양한 평가 지표를 통해 시스템의 답변 품질을 검증했습니다.
+
+### 평가 방법 / Evaluation Methods
+
+- **BERTScore**: 생성된 답변과 참조 답변 간의 의미적 유사성을 측정
+- **LLM-as-a-Judge**: GPT-4o를 활용한 답변의 정확성 및 관련성 평가
+
+### 답변 생성 성능 / Answer Generation Performance
+
+| 모델 | BERTScore | LLM-as-a-Judge |
+|------|-----------|----------------|
+| KLUE-RoBERTa-base (미세조정 없음) | 84.65% | 15.14% |
+| KLUE-RoBERTa-base + MNRL | 93.02% | 50.84% |
+| KLUE-RoBERTa-base + MNRL + MRL | 92.94% | 54.26% |
+| KLUE-RoBERTa-base + MNRL + MRL + SBE (CONSTRUCT-RAG) | **94.51%** | **61.99%** |
+| multilingual-e5-large | 92.42% | 50.04% |
+| text-embedding-3-large | 91.47% | 47.09% |
+
+### 답변 예시 / Example Answers
+
+**질문**: 태양광 발전 설비 공사에서 태양광 패널 모듈 지지대 설치 상세는 어디에 포함되며, 설치 후 어떤 검사와 확인이 필요한가요?
+
+**CONSTRUCT-RAG 답변**: 
+태양광 패널 모듈 지지대 설치 상세는 "시공 상세도" 항목에 포함됩니다. 설치 후에는 사용 전 검사, 설치 검증, 자체 검사(인증기관 시험 포함), 그리고 다양한 유지보수 점검을 실시해야 합니다.
+
+**일반 RAG 답변**:
+태양광 설비 공사 항목에 태양광 패널 모듈 지지대 설치 상세가 포함됩니다. 설치 후에는 사용 전 검사와 설치 검증이 필요합니다.
+
+이 예시에서 볼 수 있듯이, CONSTRUCT-RAG는 더 완전하고 정확한 정보를 제공하며, 특히 기술적 세부사항을 누락 없이 포함합니다.
+
 
 ## 📚 인용 / Citation
 
