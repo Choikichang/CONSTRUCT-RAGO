@@ -136,6 +136,19 @@ python download_models.py
 ```preparing...
 ```
 
+## 📈 성능 비교 / Performance Comparison
+
+모델 비교 / Model Comparison:
+
+| 모델 | Hit Rate@1 | NDCG@5 | MRR@5 | 모델 크기 |
+|------|------------|--------|-------|----------|
+| KLUE-RoBERTa-base | 12.40% | 0.1983 | 0.1766 | 443MB |
+| KLUE-RoBERTa-base + MNRL | 58.65% | 0.6904 | 0.6621 | 443MB |
+| KLUE-RoBERTa-base + MNRL + MRL | 59.60% | 0.7454 | 0.7047 | 443MB |
+| KLUE-RoBERTa-base + MNRL + MRL + SBE | **69.32%** | **0.8082** | **0.7769** | 443MB |
+| multilingual-e5-large | 59.84% | 0.7336 | 0.6961 | 2.24GB |
+| text-embedding-3-large | 52.67% | 0.6784 | 0.6349 | - |
+
 ## 🔍 답변 생성 평가 / Answer Generation Evaluation
 
 CONSTRUCT-RAG는 정확한 검색뿐만 아니라 고품질의 답변 생성도 중요시합니다. 다양한 평가 지표를 통해 시스템의 답변 품질을 검증했습니다.
@@ -184,11 +197,37 @@ CONSTRUCT-RAG prioritizes not only accurate retrieval but also high-quality answ
 
 *As shown in this example, CONSTRUCT-RAG provides more complete and accurate information, particularly including technical details without omissions.*
 
-## 📈 성능 비교 / Performance Comparison
+## 📚 인용 / Citation
 
-모델 비교 / Model Comparison:
+논문을 인용하려면 다음 BibTeX 항목을 사용하세요:
 
-| 모델 / Model | Hit Rate@1 | NDCG@5 | MRR@5 | 모델 크기 / Model Size |
-|------|------------|--------|-------|----------|
-| KLUE-RoBERTa-base | 12.40% | 0.1983 | 0.1766 | 443MB |
-| KLUE-RoBERTa-base + MN
+```bibtex
+@article{choi2025constructrag,
+  title={CONSTRUCT-RAG: Contrastive Sentence Training \& Retrieval Using Chunk block-based Text for RAG},
+  author={Choi, Kichang and Jeong, Minwoo and Shin, Younga and Ma, Jongwon and Kim, Kinam and Kim, Hongjo},
+  journal={Automation in Construction},
+  year={2025},
+  publisher={Elsevier},
+  note={Preprint}
+}
+```
+
+## 📄 라이센스 / License
+
+이 프로젝트는 MIT 라이센스 하에 배포됩니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
+
+## 📬 연락처 / Contact
+
+- **교신저자 / Corresponding Author**: 김홍조 (hongjo@yonsei.ac.kr)
+- **기관 / Institution**: 연세대학교 Smart Infrastructure LAB, 서울시 서대문구 연세로 50 1공학관 N504, 03722, 대한민국
+  
+  *Yonsei University Smart Infrastructure LAB, N504, Engineering Hall 1, 50 Yonsei-ro, Seodaemun-gu, Seoul, 03722, Republic of Korea*
+- **GitHub Issues**: 문제나 제안사항이 있으시면 최기창 (amki1027@yonsei.ac.kr)로 연락 부탁드립니다.
+  
+  *For issues or suggestions, please contact Kichang Choi (amki1027@yonsei.ac.kr)*
+
+---
+
+<div align="center">
+  <sub>Built with ❤️ by Kichang Choi, Minwoo Jeong, Younga Shin, Jongwon Ma, Kinam Kim, and Hongjo Kim.</sub>
+</div>
