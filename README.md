@@ -56,9 +56,20 @@ Our research integrates Contrastive Sentence Generation (CSG) and Sentence Block
 ## 🚀 주요 기능 / Key Features
 
 - **대조적 문장 생성 (CSG)**: LLM을 활용하여 경제적으로 대조적 문장 쌍을 생성
+  
+  *Contrastive Sentence Generation: Economically generate contrastive sentence pairs using LLMs*
+
 - **문장 블록 임베딩 (SBE)**: 긴 문서의 검색 성능을 향상시키는 혁신적인 임베딩 방법
+  
+  *Sentence Block Embedding: Innovative embedding method to improve retrieval performance for long documents*
+
 - **Matryoshka 표현 학습**: 다중 벡터 차원을 통한 효율적인 임베딩 모델 미세 조정
+  
+  *Matryoshka Representation Learning: Efficient embedding model fine-tuning through multiple vector dimensions*
+
 - **다중 부정 랭킹 손실 (MNRL)**: 의미론적 관계성에 기반한 고급 임베딩 학습 방법
+  
+  *Multiple Negative Ranking Loss: Advanced embedding learning method based on semantic relationships*
 
 ## 💻 설치 방법 / Installation
 
@@ -94,6 +105,54 @@ python download_models.py
 ```preparing...
 ```
 
+## 🔍 답변 생성 평가 / Answer Generation Evaluation
+
+CONSTRUCT-RAG는 정확한 검색뿐만 아니라 고품질의 답변 생성도 중요시합니다. 다양한 평가 지표를 통해 시스템의 답변 품질을 검증했습니다.
+
+CONSTRUCT-RAG prioritizes not only accurate retrieval but also high-quality answer generation. We validated our system's answer quality through various evaluation metrics.
+
+### 평가 방법 / Evaluation Methods
+
+- **BERTScore**: 생성된 답변과 참조 답변 간의 의미적 유사성을 측정
+  
+  *Measures semantic similarity between generated answers and reference answers*
+
+- **LLM-as-a-Judge**: GPT-4o를 활용한 답변의 정확성 및 관련성 평가
+  
+  *Evaluates answer accuracy and relevance using GPT-4o as a judge*
+
+### 답변 생성 성능 / Answer Generation Performance
+
+| 모델 / Model | BERTScore | LLM-as-a-Judge |
+|------|-----------|----------------|
+| KLUE-RoBERTa-base (미세조정 없음 / No fine-tuning) | 84.65% | 15.14% |
+| KLUE-RoBERTa-base + MNRL | 93.02% | 50.84% |
+| KLUE-RoBERTa-base + MNRL + MRL | 92.94% | 54.26% |
+| KLUE-RoBERTa-base + MNRL + MRL + SBE (CONSTRUCT-RAG) | **94.51%** | **61.99%** |
+| multilingual-e5-large | 92.42% | 50.04% |
+| text-embedding-3-large | 91.47% | 47.09% |
+
+### 답변 예시 / Example Answers
+
+**질문 / Question**: 
+태양광 발전 설비 공사에서 태양광 패널 모듈 지지대 설치 상세는 어디에 포함되며, 설치 후 어떤 검사와 확인이 필요한가요?
+
+*In solar power installation work, which section includes the installation details of the solar panel module support, and what inspections and verifications are required after installation?*
+
+**CONSTRUCT-RAG 답변 / Answer**: 
+태양광 패널 모듈 지지대 설치 상세는 "시공 상세도" 항목에 포함됩니다. 설치 후에는 사용 전 검사, 설치 검증, 자체 검사(인증기관 시험 포함), 그리고 다양한 유지보수 점검을 실시해야 합니다.
+
+*The solar panel module support installation details are included in the "construction detail drawings" section. After installation, pre-use inspection, installation verification, self-inspection (including certified institution testing), and various maintenance checks must be conducted.*
+
+**일반 RAG 답변 / Standard RAG Answer**:
+태양광 설비 공사 항목에 태양광 패널 모듈 지지대 설치 상세가 포함됩니다. 설치 후에는 사용 전 검사와 설치 검증이 필요합니다.
+
+*The solar power installation section includes the solar panel module support installation details. After installation, pre-use inspection and installation verification are required.*
+
+이 예시에서 볼 수 있듯이, CONSTRUCT-RAG는 더 완전하고 정확한 정보를 제공하며, 특히 기술적 세부사항을 누락 없이 포함합니다.
+
+*As shown in this example, CONSTRUCT-RAG provides more complete and accurate information, particularly including technical details without omissions.*
+
 ## 📈 성능 비교 / Performance Comparison
 
 모델 비교 / Model Comparison:
@@ -106,40 +165,6 @@ python download_models.py
 | KLUE-RoBERTa-base + MNRL + MRL + SBE | **69.32%** | **0.8082** | **0.7769** | 443MB |
 | multilingual-e5-large | 59.84% | 0.7336 | 0.6961 | 2.24GB |
 | text-embedding-3-large | 52.67% | 0.6784 | 0.6349 | - |
-
-
-## 🔍 답변 생성 평가 / Answer Generation Evaluation
-
-CONSTRUCT-RAG는 정확한 검색뿐만 아니라 고품질의 답변 생성도 중요시합니다. 다양한 평가 지표를 통해 시스템의 답변 품질을 검증했습니다.
-
-### 평가 방법 / Evaluation Methods
-
-- **BERTScore**: 생성된 답변과 참조 답변 간의 의미적 유사성을 측정
-- **LLM-as-a-Judge**: GPT-4o를 활용한 답변의 정확성 및 관련성 평가
-
-### 답변 생성 성능 / Answer Generation Performance
-
-| 모델 | BERTScore | LLM-as-a-Judge |
-|------|-----------|----------------|
-| KLUE-RoBERTa-base (미세조정 없음) | 84.65% | 15.14% |
-| KLUE-RoBERTa-base + MNRL | 93.02% | 50.84% |
-| KLUE-RoBERTa-base + MNRL + MRL | 92.94% | 54.26% |
-| KLUE-RoBERTa-base + MNRL + MRL + SBE (CONSTRUCT-RAG) | **94.51%** | **61.99%** |
-| multilingual-e5-large | 92.42% | 50.04% |
-| text-embedding-3-large | 91.47% | 47.09% |
-
-### 답변 예시 / Example Answers
-
-**질문**: 태양광 발전 설비 공사에서 태양광 패널 모듈 지지대 설치 상세는 어디에 포함되며, 설치 후 어떤 검사와 확인이 필요한가요?
-
-**CONSTRUCT-RAG 답변**: 
-태양광 패널 모듈 지지대 설치 상세는 "시공 상세도" 항목에 포함됩니다. 설치 후에는 사용 전 검사, 설치 검증, 자체 검사(인증기관 시험 포함), 그리고 다양한 유지보수 점검을 실시해야 합니다.
-
-**일반 RAG 답변**:
-태양광 설비 공사 항목에 태양광 패널 모듈 지지대 설치 상세가 포함됩니다. 설치 후에는 사용 전 검사와 설치 검증이 필요합니다.
-
-이 예시에서 볼 수 있듯이, CONSTRUCT-RAG는 더 완전하고 정확한 정보를 제공하며, 특히 기술적 세부사항을 누락 없이 포함합니다.
-
 
 ## 📚 인용 / Citation
 
@@ -162,9 +187,13 @@ CONSTRUCT-RAG는 정확한 검색뿐만 아니라 고품질의 답변 생성도 
 
 ## 📬 연락처 / Contact
 
-- **교신저자**: 김홍조 (hongjo@yonsei.ac.kr)
-- **기관**: 연세대학교 Smart Infrastructure LAB, 서울시 서대문구 연세로 50 1공학관 N504, 03722, 대한민국
+- **교신저자 / Corresponding Author**: 김홍조 (hongjo@yonsei.ac.kr)
+- **기관 / Institution**: 연세대학교 Smart Infrastructure LAB, 서울시 서대문구 연세로 50 1공학관 N504, 03722, 대한민국
+  
+  *Yonsei University Smart Infrastructure LAB, N504, Engineering Hall 1, 50 Yonsei-ro, Seodaemun-gu, Seoul, 03722, Republic of Korea*
 - **GitHub Issues**: 문제나 제안사항이 있으시면 최기창 (amki1027@yonsei.ac.kr)로 연락 부탁드립니다.
+  
+  *For issues or suggestions, please contact Kichang Choi (amki1027@yonsei.ac.kr)*
 
 ---
 
