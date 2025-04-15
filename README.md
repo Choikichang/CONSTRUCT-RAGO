@@ -15,6 +15,7 @@
 - [소개 (한국어)](#-소개-한국어)
 - [Introduction (English)](#-introduction-english)
 - [주요 기능 / Key Features](#-주요-기능--key-features)
+- [기술 스택 / Tech Stack](#️-기술-스택--tech-stack)
 - [설치 방법 / Installation](#-설치-방법--installation)
 - [사용 방법 / Usage](#-사용-방법--usage) 
 - [답변 생성 평가 / Answer Generation Evaluation](#-답변-생성-평가--answer-generation-evaluation)
@@ -70,6 +71,36 @@ Our research integrates Contrastive Sentence Generation (CSG) and Sentence Block
 - **다중 부정 랭킹 손실 (MNRL)**: 의미론적 관계성에 기반한 고급 임베딩 학습 방법
   
   *Multiple Negative Ranking Loss: Advanced embedding learning method based on semantic relationships*
+
+## 🛠️ 기술 스택 / Tech Stack
+
+CONSTRUCT-RAG 개발 및 실험에 사용된 주요 도구 및 라이브러리:
+
+*Key tools and libraries used in CONSTRUCT-RAG development and experiments:*
+
+- **[Kiwi](https://github.com/bab2min/Kiwi)**: 한국어 형태소 분석 및 전처리를 위한 라이브러리
+  
+  *Korean morphological analyzer for text preprocessing*
+
+- **[LangChain](https://github.com/langchain-ai/langchain)**: LLM 애플리케이션 개발 및 RAG 파이프라인 구축을 위한 프레임워크
+  
+  *Framework for building LLM applications and RAG pipelines*
+
+- **[Sentence-Transformers](https://github.com/UKPLab/sentence-transformers)**: 문장 임베딩 모델 및 미세 조정을 위한 라이브러리
+  
+  *Library for sentence embedding models and fine-tuning*
+
+- **[PyTorch](https://pytorch.org/)**: 딥러닝 모델 개발 및 학습에 사용된 프레임워크
+  
+  *Framework used for deep learning model development and training*
+
+- **[Faiss](https://github.com/facebookresearch/faiss)**: 벡터 검색 및 클러스터링을 위한 라이브러리
+  
+  *Library for efficient vector search and clustering*
+
+- **[Hugging Face Transformers](https://github.com/huggingface/transformers)**: 다양한 사전 훈련된 모델 액세스를 위한 라이브러리
+  
+  *Library for accessing various pre-trained models*
 
 ## 💻 설치 방법 / Installation
 
@@ -157,46 +188,7 @@ CONSTRUCT-RAG prioritizes not only accurate retrieval but also high-quality answ
 
 모델 비교 / Model Comparison:
 
-| 모델 | Hit Rate@1 | NDCG@5 | MRR@5 | 모델 크기 |
+| 모델 / Model | Hit Rate@1 | NDCG@5 | MRR@5 | 모델 크기 / Model Size |
 |------|------------|--------|-------|----------|
 | KLUE-RoBERTa-base | 12.40% | 0.1983 | 0.1766 | 443MB |
-| KLUE-RoBERTa-base + MNRL | 58.65% | 0.6904 | 0.6621 | 443MB |
-| KLUE-RoBERTa-base + MNRL + MRL | 59.60% | 0.7454 | 0.7047 | 443MB |
-| KLUE-RoBERTa-base + MNRL + MRL + SBE | **69.32%** | **0.8082** | **0.7769** | 443MB |
-| multilingual-e5-large | 59.84% | 0.7336 | 0.6961 | 2.24GB |
-| text-embedding-3-large | 52.67% | 0.6784 | 0.6349 | - |
-
-## 📚 인용 / Citation
-
-논문을 인용하려면 다음 BibTeX 항목을 사용하세요:
-
-```bibtex
-@article{choi2025constructrag,
-  title={CONSTRUCT-RAG: Contrastive Sentence Training \& Retrieval Using Chunk block-based Text for RAG},
-  author={Choi, Kichang and Jeong, Minwoo and Shin, Younga and Ma, Jongwon and Kim, Kinam and Kim, Hongjo},
-  journal={Automation in Construction},
-  year={2025},
-  publisher={Elsevier},
-  note={Preprint}
-}
-```
-
-## 📄 라이센스 / License
-
-이 프로젝트는 MIT 라이센스 하에 배포됩니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
-
-## 📬 연락처 / Contact
-
-- **교신저자 / Corresponding Author**: 김홍조 (hongjo@yonsei.ac.kr)
-- **기관 / Institution**: 연세대학교 Smart Infrastructure LAB, 서울시 서대문구 연세로 50 1공학관 N504, 03722, 대한민국
-  
-  *Yonsei University Smart Infrastructure LAB, N504, Engineering Hall 1, 50 Yonsei-ro, Seodaemun-gu, Seoul, 03722, Republic of Korea*
-- **GitHub Issues**: 문제나 제안사항이 있으시면 최기창 (amki1027@yonsei.ac.kr)로 연락 부탁드립니다.
-  
-  *For issues or suggestions, please contact Kichang Choi (amki1027@yonsei.ac.kr)*
-
----
-
-<div align="center">
-  <sub>Built with ❤️ by Kichang Choi, Minwoo Jeong, Younga Shin, Jongwon Ma, Kinam Kim, and Hongjo Kim.</sub>
-</div>
+| KLUE-RoBERTa-base + MN
