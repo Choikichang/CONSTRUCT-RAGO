@@ -1,6 +1,6 @@
 <div align="center">
 
-# CONSTRUCT-RAG 🏗️  
+# CONSTRUCT-RAGO 🏗️  
 **Contrastive Sentence Training & Retrieval Using Chunk block-based Text for RAG**  
 
 [![Paper](https://img.shields.io/badge/Paper-SSRN-blue)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5205959)
@@ -8,7 +8,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)
 
-**Choikichang/Construct-RAG**  
+**Choikichang/Construct-RAGO**  
 Base: `intfloat/multilingual-e5-large` • Seed: `42`
 
 </div>
